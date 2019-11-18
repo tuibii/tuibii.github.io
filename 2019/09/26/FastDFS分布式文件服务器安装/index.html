@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="baidu-site-verification" content="vvVgSQUzPU">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="虎虎|博客|个人|utone|Utone|">
+    <meta name="description" content="骑士恨煎蛋，骑士恨孜然">
+    
+    <title>
+       FastDFS分布式文件服务器安装 -  t Blog
+    </title>
+    <link rel="stylesheet" href="/css/style.css"> 
+    
+      <link rel="icon" href="/images/favicon.png">
+    
+  </head>
+  <body>
+    <div id="container">
+      <div id="main-left">
+        <div id="introduce">
+          <div class="logo-worp">
+            <a href="/"><img class="logo" src="/images/logo.jpg" alt></a>
+          </div>
+          <ul>
+            
+              <li><a href="/"> Home </a></li>
+            
+              <li><a href="/blog"> Blog </a></li>
+            
+              <li><a href="/about"> About </a></li>
+            
+              <li><a href="/atom.xml"> RSS </a></li>
+            
+            <li>
+              <img id="search-img" src="/images/search.svg" alt="search">
+            </li>
+          </ul>
+           
+             
+          
+        </div>
+      </div>
+      <div id="main-right"><div id="post">
+    
+    <header class="article-header">
+        <h1>
+            FastDFS分布式文件服务器安装
+        </h1>
+    </header>
+    
+    <div class="post-meta">
+        <time class="post-data" datetime="2019-09-26T07:17:34.000Z" itemprop="datePublished">
+            2019-09-26
+        </time>
+        
+        
+        <ul class="post-tag-list"><li class="post-tag-list-item"><a class="post-tag-list-link" href="/tags/Linux/">Linux</a><span class="post-tag-list-count">1</span></li><li class="post-tag-list-item"><a class="post-tag-list-link" href="/tags/文件服务器/">文件服务器</a><span class="post-tag-list-count">1</span></li></ul>
+        
+    </div>
+    
+    <div class="post-entry">
+        <p>FastDFS是一款开源的分布式文件系统，功能主要包括：文件存储、文件同步、文件访问（文件上传、文件下载）等，解决了文件大容量存储和高性能访问的问题。FastDFS特别适合以文件为载体的在线服务，如图片、视频、文档等等。</p>
+<ol>
+<li><p>安装gcc<br>yum install make cmake gcc gcc-c++<br><img src="/images/clipboard.png" alt></p>
+</li>
+<li><p>下载libfastcommon<br>wget <a href="https://github.com/happyfish100/libfastcommon/archive/V1.0.39.tar.gz" target="_blank" rel="noopener">https://github.com/happyfish100/libfastcommon/archive/V1.0.39.tar.gz</a> -SO libfastcommon.tar.gz<br><img src="/images/clipboard1.png" alt></p>
+</li>
+<li><p>解压<br> tar -xf libfastcommon.tar.gz<br> <img src="/images/clipboard2.png" alt></p>
+</li>
+<li><p>编译<br>./make.sh<br><img src="/images/clipboard3.png" alt></p>
+</li>
+<li><p>安装<br>./make.sh install<br><img src="/images/clipboard4.png" alt></p>
+</li>
+<li><p>下载fastdfs<br>wget <a href="https://github.com/happyfish100/fastdfs/archive/V5.11.tar.gz" target="_blank" rel="noopener">https://github.com/happyfish100/fastdfs/archive/V5.11.tar.gz</a> -SO fastdfs.tar.gz<br><img src="/images/clipboard5.png" alt></p>
+</li>
+<li><p>解压<br>tar -xf fastdfs.tar.gz<br><img src="/images/clipboard6.png" alt></p>
+</li>
+<li><p>编译<br>./make.sh<br><img src="/images/clipboard7.png" alt></p>
+</li>
+<li><p>安装<br>./make.sh install<br><img src="/images/clipboard8.png" alt></p>
+<p>程序在 /usr/bin 目录下    配置文件在 /etc/fdfs 目录下<br>which fdfs_trackerd<br>ls /etc/fdfs<br><img src="/images/clipboard9.png" alt><br>配置文件是不完整的  把安装包中的配置文件拷贝到  /etc/fdfs 目录下<br>sudo cp /usr/local/fastdfs/fastdfs-5.11/conf/* /etc/fdfs<br><img src="/images/clipboard10.png" alt></p>
+<p>启动服务<br>fdfs_trackerd /etc/fdfs/tracker.conf start<br>fdfs_storaged /etc/fdfs/storage.conf start</p>
+</li>
+</ol>
+
+    </div>
+</div></div>
+    </div>
+    <div id="footer">骑士恨煎蛋，骑士恨孜然</div>
+    <img id="top" src="/images/up-circle.svg" alt="top">
+    
+  </body>
+</html>
+<!-- 加载主题脚本文件 -->
+<script src="/scripts/utone.js"></script>
+
+<script type="text/javascript">
+  window.onload = function() {
+    scroll.init()
+    siteSearch.init()
+  }
+</script>

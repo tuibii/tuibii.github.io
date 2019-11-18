@@ -8,11 +8,11 @@
     <meta name="description" content="骑士恨煎蛋，骑士恨孜然">
     
     <title>
-       笔记 -  tt Blog
+       mysql笔记 -  t Blog
     </title>
     <link rel="stylesheet" href="/css/style.css"> 
     
-      <link rel="icon" href="/images/favicon.ico">
+      <link rel="icon" href="/images/favicon.png">
     
   </head>
   <body>
@@ -37,15 +37,15 @@
             </li>
           </ul>
            
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#先抛出几个问题"><span class="post-toc-number">1.</span> <span class="post-toc-text">先抛出几个问题</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#索引"><span class="post-toc-number">2.</span> <span class="post-toc-text">索引</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#根据以上描述我们可以得到以下信息："><span class="post-toc-number">2.1.</span> <span class="post-toc-text">根据以上描述我们可以得到以下信息：</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#存储格式"><span class="post-toc-number">3.</span> <span class="post-toc-text">存储格式</span></a></li></ol> 
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#先抛出几个问题"><span class="post-toc-number">1.</span> <span class="post-toc-text">先抛出几个问题</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#索引"><span class="post-toc-number">2.</span> <span class="post-toc-text">索引</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#根据以上描述我们可以得到以下信息："><span class="post-toc-number">2.1.</span> <span class="post-toc-text">根据以上描述我们可以得到以下信息：</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#存储格式"><span class="post-toc-number">3.</span> <span class="post-toc-text">存储格式</span></a></li></ol><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#未完待续。。"><span class="post-toc-number"></span> <span class="post-toc-text">未完待续。。</span></a> 
           
-        </div>
+        </li></div>
       </div>
       <div id="main-right"><div id="post">
     
     <header class="article-header">
         <h1>
-            笔记
+            mysql笔记
         </h1>
     </header>
     
@@ -55,7 +55,7 @@
         </time>
         
         
-        <ul class="post-tag-list"><li class="post-tag-list-item"><a class="post-tag-list-link" href="/tags/mysql/">mysql</a><span class="post-tag-list-count">1</span></li><li class="post-tag-list-item"><a class="post-tag-list-link" href="/tags/数据库/">数据库</a><span class="post-tag-list-count">1</span></li></ul>
+        <ul class="post-tag-list"><li class="post-tag-list-item"><a class="post-tag-list-link" href="/tags/mysql/">mysql</a><span class="post-tag-list-count">1</span></li><li class="post-tag-list-item"><a class="post-tag-list-link" href="/tags/数据库/">数据库</a><span class="post-tag-list-count">3</span></li></ul>
         
     </div>
     
@@ -75,7 +75,7 @@
 <p>InnoDB 中，有聚簇索引和普通索引之分，聚簇索引根据主键来构建，叶子节点存放的是该主键对应的这一行记录，而普通索引根据申明这个索引时候的列来构建，叶子节点存放的是这一行记录对应的主键的值，而普通索引中还有唯一索引和联合索引两个特例，唯一索引在插入和修改的时候会校验该索引对应的列的值是否已经存在，而联合索引将两个列的值按照申明时候的顺序进行拼接后在构建索引。</p>
 <h4 id="根据以上描述我们可以得到以下信息："><a href="#根据以上描述我们可以得到以下信息：" class="headerlink" title="根据以上描述我们可以得到以下信息："></a>根据以上描述我们可以得到以下信息：</h4><p>数据是以行为单位存储在聚簇索引里的，根据主键查询可以直接利用聚簇索引定位到所在记录，根据普通索引查询需要先在普通索引上找到对应的主键的值，然后根据主键值去聚簇索引上查找记录，俗称回表。</p>
 <p>普通索引上存储的值是主键的值，如果主键是一个很长的字符串并且建了很多普通索引，将造成普通索引占有很大的物理空间，这也是为什么建议使用 自增ID 来替代订单号作为主键，另一个原因是 自增ID 在 insert 的时候可以保证相邻的两条记录可能在同一个数据块，而订单号的连续性在设计上可能没有自增ID好，导致连续插入可能在多个数据块，增加了磁盘读写次数。</p>
-<h3 id="存储格式"><a href="#存储格式" class="headerlink" title="存储格式"></a>存储格式</h3>
+<h3 id="存储格式"><a href="#存储格式" class="headerlink" title="存储格式"></a>存储格式</h3><h1 id="未完待续。。"><a href="#未完待续。。" class="headerlink" title="未完待续。。"></a>未完待续。。</h1>
     </div>
 </div></div>
     </div>

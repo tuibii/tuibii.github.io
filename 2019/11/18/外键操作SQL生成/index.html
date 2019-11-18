@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="baidu-site-verification" content="vvVgSQUzPU">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="虎虎|博客|个人|utone|Utone|">
+    <meta name="description" content="骑士恨煎蛋，骑士恨孜然">
+    
+    <title>
+       外键操作SQL生成 -  t Blog
+    </title>
+    <link rel="stylesheet" href="/css/style.css"> 
+    
+      <link rel="icon" href="/images/favicon.png">
+    
+  </head>
+  <body>
+    <div id="container">
+      <div id="main-left">
+        <div id="introduce">
+          <div class="logo-worp">
+            <a href="/"><img class="logo" src="/images/logo.jpg" alt></a>
+          </div>
+          <ul>
+            
+              <li><a href="/"> Home </a></li>
+            
+              <li><a href="/blog"> Blog </a></li>
+            
+              <li><a href="/about"> About </a></li>
+            
+              <li><a href="/atom.xml"> RSS </a></li>
+            
+            <li>
+              <img id="search-img" src="/images/search.svg" alt="search">
+            </li>
+          </ul>
+           
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#组装禁用所有外键的语句"><span class="post-toc-number">1.</span> <span class="post-toc-text">组装禁用所有外键的语句</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#组装启用所有外键的语句"><span class="post-toc-number">2.</span> <span class="post-toc-text">组装启用所有外键的语句</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#组装删除所有外键的语句"><span class="post-toc-number">3.</span> <span class="post-toc-text">组装删除所有外键的语句</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#查询所有外键"><span class="post-toc-number">4.</span> <span class="post-toc-text">查询所有外键</span></a></li></ol> 
+          
+        </div>
+      </div>
+      <div id="main-right"><div id="post">
+    
+    <header class="article-header">
+        <h1>
+            外键操作SQL生成
+        </h1>
+    </header>
+    
+    <div class="post-meta">
+        <time class="post-data" datetime="2019-11-18T07:59:54.000Z" itemprop="datePublished">
+            2019-11-18
+        </time>
+        
+        
+        <ul class="post-tag-list"><li class="post-tag-list-item"><a class="post-tag-list-link" href="/tags/数据库/">数据库</a><span class="post-tag-list-count">3</span></li></ul>
+        
+    </div>
+    
+    <div class="post-entry">
+        <h5 id="组装禁用所有外键的语句"><a href="#组装禁用所有外键的语句" class="headerlink" title="组装禁用所有外键的语句"></a>组装禁用所有外键的语句</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select &apos;alter table &apos;||table_name||&apos; disable constraint &apos;||constraint_name||&apos;;&apos; from user_constraints where constraint_type=&apos;R&apos;;</span><br></pre></td></tr></table></figure>
+
+<h5 id="组装启用所有外键的语句"><a href="#组装启用所有外键的语句" class="headerlink" title="组装启用所有外键的语句"></a>组装启用所有外键的语句</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select &apos;alter table &apos;||table_name||&apos; enable constraint &apos;||constraint_name||&apos;;&apos; from user_constraints where constraint_type=&apos;R&apos;;</span><br></pre></td></tr></table></figure>
+
+<h5 id="组装删除所有外键的语句"><a href="#组装删除所有外键的语句" class="headerlink" title="组装删除所有外键的语句"></a>组装删除所有外键的语句</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select &apos;alter table &apos;||table_name||&apos; drop constraint &apos;||constraint_name||&apos;;&apos; from user_constraints where constraint_type=&apos;R&apos;;</span><br></pre></td></tr></table></figure>
+
+<h5 id="查询所有外键"><a href="#查询所有外键" class="headerlink" title="查询所有外键"></a>查询所有外键</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select t.status,t.* from user_constraints t where constraint_type=&apos;R&apos;;</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+</div></div>
+    </div>
+    <div id="footer">骑士恨煎蛋，骑士恨孜然</div>
+    <img id="top" src="/images/up-circle.svg" alt="top">
+    
+  </body>
+</html>
+<!-- 加载主题脚本文件 -->
+<script src="/scripts/utone.js"></script>
+
+<script type="text/javascript">
+  window.onload = function() {
+    scroll.init()
+    siteSearch.init()
+  }
+</script>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="baidu-site-verification" content="vvVgSQUzPU">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="虎虎|博客|个人|utone|Utone|">
+    <meta name="description" content="骑士恨煎蛋，骑士恨孜然">
+    
+    <title>
+       Oracle数据库全量导出 -  t Blog
+    </title>
+    <link rel="stylesheet" href="/css/style.css"> 
+    
+      <link rel="icon" href="/images/favicon.png">
+    
+  </head>
+  <body>
+    <div id="container">
+      <div id="main-left">
+        <div id="introduce">
+          <div class="logo-worp">
+            <a href="/"><img class="logo" src="/images/logo.jpg" alt></a>
+          </div>
+          <ul>
+            
+              <li><a href="/"> Home </a></li>
+            
+              <li><a href="/blog"> Blog </a></li>
+            
+              <li><a href="/about"> About </a></li>
+            
+              <li><a href="/atom.xml"> RSS </a></li>
+            
+            <li>
+              <img id="search-img" src="/images/search.svg" alt="search">
+            </li>
+          </ul>
+           
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#导出dmp"><span class="post-toc-number">1.</span> <span class="post-toc-text">导出dmp</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#导入dmp"><span class="post-toc-number">2.</span> <span class="post-toc-text">导入dmp</span></a></li></ol> 
+          
+        </div>
+      </div>
+      <div id="main-right"><div id="post">
+    
+    <header class="article-header">
+        <h1>
+            Oracle数据库全量导出
+        </h1>
+    </header>
+    
+    <div class="post-meta">
+        <time class="post-data" datetime="2019-11-13T07:19:03.000Z" itemprop="datePublished">
+            2019-11-13
+        </time>
+        
+        
+        <ul class="post-tag-list"><li class="post-tag-list-item"><a class="post-tag-list-link" href="/tags/Oracle/">Oracle</a><span class="post-tag-list-count">1</span></li><li class="post-tag-list-item"><a class="post-tag-list-link" href="/tags/数据库/">数据库</a><span class="post-tag-list-count">3</span></li></ul>
+        
+    </div>
+    
+    <div class="post-entry">
+        <p>今天需要把测试服务器数据库迁移到生产上，导出SQL和执行SQL都需要很长的时间，而导出和执行dmp文件，只需要几秒钟，就可以将数据库迁移到生产服务器上</p>
+<h4 id="导出dmp"><a href="#导出dmp" class="headerlink" title="导出dmp"></a>导出dmp</h4><ol>
+<li>切换Oracle角色<br>su - oracle<br><img src="/images/1570519128.png" alt></li>
+<li>导出<br>exp 用户名/密码@orcl file=路径 owner=用户名<br><img src="/images/1570519254.png" alt></li>
+</ol>
+<h4 id="导入dmp"><a href="#导入dmp" class="headerlink" title="导入dmp"></a>导入dmp</h4><ol>
+<li>在目标机器上创建一个专用文件夹，比如imp_dmp，将dmp文件放入该文件夹；<br>注：需要创建的文件不止log一个，所以给个文件夹并赋权最方便；</li>
+<li>将该文件夹修改所有者：chown -R oracle:oinstall imp_dmp;</li>
+<li>在目标机器上切换到oracle操作者：su - oracle<br>此步是为了执行命令时可以获取到环境变量，否则会找不到imp命令</li>
+<li>执行导入命令：<br>imp 用户名/密码 file=dmp文件路径 log=log文件路径 fromuser=原数据库用户名 touser=用户名<br><img src="/images/1570519395.png" alt></li>
+</ol>
+
+    </div>
+</div></div>
+    </div>
+    <div id="footer">骑士恨煎蛋，骑士恨孜然</div>
+    <img id="top" src="/images/up-circle.svg" alt="top">
+    
+  </body>
+</html>
+<!-- 加载主题脚本文件 -->
+<script src="/scripts/utone.js"></script>
+
+<script type="text/javascript">
+  window.onload = function() {
+    scroll.init()
+    siteSearch.init()
+  }
+</script>
