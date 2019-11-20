@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>t Blog</title>
+  <icon>https://tuibii.github.io/icon.png</icon>
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://tuibii.github.io/"/>
+  <updated>2019-11-18T08:16:26.531Z</updated>
+  <id>https://tuibii.github.io/</id>
+  
+  <author>
+    <name>tuibii</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>外键操作SQL生成</title>
+    <link href="https://tuibii.github.io/2019/11/18/%E5%A4%96%E9%94%AE%E6%93%8D%E4%BD%9CSQL%E7%94%9F%E6%88%90/"/>
+    <id>https://tuibii.github.io/2019/11/18/%E5%A4%96%E9%94%AE%E6%93%8D%E4%BD%9CSQL%E7%94%9F%E6%88%90/</id>
+    <published>2019-11-18T07:59:54.000Z</published>
+    <updated>2019-11-18T08:16:26.531Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h5 id=&quot;组装禁用所有外键的语句&quot;&gt;组装禁用所有外键的语句&lt;a class=&quot;post-anchor&quot; href=&quot;#组装禁用所有外键的语句&quot;&gt;&lt;/a&gt;&lt;/h5&gt;&lt;pre&gt;&lt;code class=&quot;hljs undefined&quot;&gt;select &amp;apos;alter tab
+      
+    
+    </summary>
+    
+    
+    
+      <category term="数据库" scheme="https://tuibii.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Oracle数据库全量导出</title>
+    <link href="https://tuibii.github.io/2019/11/13/Oracle%E6%95%B0%E6%8D%AE%E5%BA%93%E5%85%A8%E9%87%8F%E5%AF%BC%E5%87%BA/"/>
+    <id>https://tuibii.github.io/2019/11/13/Oracle%E6%95%B0%E6%8D%AE%E5%BA%93%E5%85%A8%E9%87%8F%E5%AF%BC%E5%87%BA/</id>
+    <published>2019-11-13T07:19:03.000Z</published>
+    <updated>2019-11-19T10:03:55.383Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;今天需要把测试服务器数据库迁移到生产上，导出SQL和执行SQL都需要很长的时间，而导出和执行dmp文件，只需要几秒钟，就可以将数据库迁移到生产服务器上&lt;/p&gt;
+&lt;h4 id=&quot;导出dmp&quot;&gt;导出dmp&lt;a class=&quot;post-anchor&quot; href=&quot;#导出dmp&quot;&gt;
+      
+    
+    </summary>
+    
+    
+    
+      <category term="数据库" scheme="https://tuibii.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+      <category term="Oracle" scheme="https://tuibii.github.io/tags/Oracle/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>FastDFS分布式文件服务器安装</title>
+    <link href="https://tuibii.github.io/2019/09/26/FastDFS%E5%88%86%E5%B8%83%E5%BC%8F%E6%96%87%E4%BB%B6%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E8%A3%85/"/>
+    <id>https://tuibii.github.io/2019/09/26/FastDFS%E5%88%86%E5%B8%83%E5%BC%8F%E6%96%87%E4%BB%B6%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E8%A3%85/</id>
+    <published>2019-09-26T07:17:34.000Z</published>
+    <updated>2019-11-19T10:03:55.387Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;FastDFS是一款开源的分布式文件系统，功能主要包括：文件存储、文件同步、文件访问（文件上传、文件下载）等，解决了文件大容量存储和高性能访问的问题。FastDFS特别适合以文件为载体的在线服务，如图片、视频、文档等等。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;安装gcc&lt;br&gt;y
+      
+    
+    </summary>
+    
+    
+    
+      <category term="Linux" scheme="https://tuibii.github.io/tags/Linux/"/>
+    
+      <category term="文件服务器" scheme="https://tuibii.github.io/tags/%E6%96%87%E4%BB%B6%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>多线程笔记</title>
+    <link href="https://tuibii.github.io/2019/07/25/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%AC%94%E8%AE%B0/"/>
+    <id>https://tuibii.github.io/2019/07/25/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%AC%94%E8%AE%B0/</id>
+    <published>2019-07-25T02:39:52.000Z</published>
+    <updated>2019-11-20T03:06:36.327Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h5 id=&quot;synchronized-关键字&quot;&gt;synchronized 关键字&lt;a class=&quot;post-anchor&quot; href=&quot;#synchronized-关键字&quot;&gt;&lt;/a&gt;&lt;/h5&gt;&lt;p&gt;对某个对象加锁&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs Jav
+      
+    
+    </summary>
+    
+    
+    
+      <category term="Java" scheme="https://tuibii.github.io/tags/Java/"/>
+    
+      <category term="多线程" scheme="https://tuibii.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>mysql笔记</title>
+    <link href="https://tuibii.github.io/2019/07/17/mysql%E7%AC%94%E8%AE%B0/"/>
+    <id>https://tuibii.github.io/2019/07/17/mysql%E7%AC%94%E8%AE%B0/</id>
+    <published>2019-07-17T02:10:24.000Z</published>
+    <updated>2019-11-18T07:14:57.920Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;先抛出几个问题&quot;&gt;先抛出几个问题&lt;a class=&quot;post-anchor&quot; href=&quot;#先抛出几个问题&quot;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;1.为什么不建议使用订单号作为主键？&lt;/li&gt;
+&lt;li&gt;2.为什么要在需要排序的字段上加上索引？&lt;/li&gt;
+&lt;li&gt;3
+      
+    
+    </summary>
+    
+    
+    
+      <category term="数据库" scheme="https://tuibii.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+      <category term="mysql" scheme="https://tuibii.github.io/tags/mysql/"/>
+    
+  </entry>
+  
+</feed>
