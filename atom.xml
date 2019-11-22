@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://tuibii.github.io/"/>
-  <updated>2019-11-18T08:16:26.531Z</updated>
+  <updated>2019-11-22T08:05:00.691Z</updated>
   <id>https://tuibii.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>模拟退火算法解旅行商问题</title>
+    <link href="https://tuibii.github.io/2019/11/22/%E6%A8%A1%E6%8B%9F%E9%80%80%E7%81%AB%E7%AE%97%E6%B3%95%E8%A7%A3%E6%97%85%E8%A1%8C%E5%95%86%E9%97%AE%E9%A2%98/"/>
+    <id>https://tuibii.github.io/2019/11/22/%E6%A8%A1%E6%8B%9F%E9%80%80%E7%81%AB%E7%AE%97%E6%B3%95%E8%A7%A3%E6%97%85%E8%A1%8C%E5%95%86%E9%97%AE%E9%A2%98/</id>
+    <published>2019-11-22T03:20:50.000Z</published>
+    <updated>2019-11-22T08:05:00.691Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;最近要做一个旅游路线规划的应用，路线规划就是一个经典的旅行商问题&lt;/p&gt;
+&lt;h5 id=&quot;旅行商问题&quot;&gt;旅行商问题&lt;a class=&quot;post-anchor&quot; href=&quot;#旅行商问题&quot;&gt;&lt;/a&gt;&lt;/h5&gt;&lt;p&gt;旅行商问题（Travelling salesman probl
+      
+    
+    </summary>
+    
+    
+    
+      <category term="Java" scheme="https://tuibii.github.io/tags/Java/"/>
+    
+      <category term="算法" scheme="https://tuibii.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
   
   <entry>
     <title>外键操作SQL生成</title>

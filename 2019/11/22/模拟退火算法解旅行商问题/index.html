@@ -16,7 +16,7 @@
     <meta name="description" content>
     
     <title>
-      外键操作SQL生成 - t Blog
+      模拟退火算法解旅行商问题 - t Blog
     </title>
     <link rel="manifest" href="/manifest.json">
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
@@ -27,7 +27,7 @@
     
     <div id="post-toc" class="animated hiddenToc hide">
       <span class="title">Toc</span>
-      <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#组装禁用所有外键的语句"><span class="toc-text">组装禁用所有外键的语句</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#组装启用所有外键的语句"><span class="toc-text">组装启用所有外键的语句</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#组装删除所有外键的语句"><span class="toc-text">组装删除所有外键的语句</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#查询所有外键"><span class="toc-text">查询所有外键</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#旅行商问题"><span class="toc-text">旅行商问题</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#模拟退火算法"><span class="toc-text">模拟退火算法</span></a></li></ol>
     </div>
     
     <div id="progress">
@@ -133,15 +133,15 @@
         <article class="post-entry">
     <div class="header">
       
-      <div class="title">外键操作SQL生成</div>
+      <div class="title">模拟退火算法解旅行商问题</div>
       <div class="meta">
         <span class="item">
           <span class="iconfont icon-time-circle"></span>
-          <span>2019/11/18</span>
+          <span>2019/11/22</span>
         </span>
 
         
-          <span class="item leancloud-visitors" id="/2019/11/18/外键操作SQL生成/" data-flag-title="外键操作SQL生成">
+          <span class="item leancloud-visitors" id="/2019/11/22/模拟退火算法解旅行商问题/" data-flag-title="模拟退火算法解旅行商问题">
             <span class="iconfont icon-eye1"></span>
             <span class="leancloud-visitors-count"></span>
           </span>
@@ -155,7 +155,11 @@
             <span>
                 
                   
-                    <a href="/tags/数据库">数据库</a>
+                    <a href="/tags/Java">Java</a>
+                  
+                
+                  
+                    <a href="/tags/算法">算法</a>
                   
                 
             </span>
@@ -165,13 +169,60 @@
       <div>
       </div>
     </div>
-    <h5 id="组装禁用所有外键的语句">组装禁用所有外键的语句<a class="post-anchor" href="#组装禁用所有外键的语句"></a></h5><pre><code class="hljs undefined">select &apos;alter table &apos;||table_name||&apos; disable constraint &apos;||constraint_name||&apos;;&apos; from user_constraints where constraint_type=&apos;R&apos;;</code></pre>
+    <p>最近要做一个旅游路线规划的应用，路线规划就是一个经典的旅行商问题</p>
+<h5 id="旅行商问题">旅行商问题<a class="post-anchor" href="#旅行商问题"></a></h5><p>旅行商问题（Travelling salesman problem, TSP）是这样一个问题：给定一系列城市和每对城市之间的距离，求解访问每一座城市一次并回到起始城市的最短回路。<br>解旅行商问题有很多种算法，这些算法分两种：精确算法和近似算法，精确算法有：回溯法、动态规划等，近似算法有：贪心算法、蚁群算法、模拟退火算法、遗传算法等。<br>精确算法一定可以解出最优解，但是时间复杂度很高，近似算法的效率就比准确算法高得多，缺点就是有一定概率得不到最优解。但是在大部分情况下，他都能算出最优解，即便得不到最优解，算出来的近似解也是十分接近最优解的，故我决定采用近似算法。<br>上网查阅一些资料后我决定采用模拟退火算法。<br>模拟退火算法(Simulated Annealing，SA)最早的思想是由N. Metropolis 等人于1953年提出。1983 年,S. Kirkpatrick 等成功地将退火思想引入到组合优化领域。它是基于Monte-Carlo迭代求解策略的一种随机寻优算法，其出发点是基于物理中固体物质的退火过程与一般组合优化问题之间的相似性。模拟退火算法从某一较高初温出发，伴随温度参数的不断下降,结合概率突跳特性在解空间中随机寻找目标函数的全局最优解，即在局部最优解能概率性地跳出并最终趋于全局最优。模拟退火算法是一种通用的优化算法，理论上算法具有概率的全局优化性能,目前已在工程中得到了广泛应用，诸如VLSI、生产调度、控制工程、机器学习、神经网络、信号处理等领域。</p>
+<h5 id="模拟退火算法">模拟退火算法<a class="post-anchor" href="#模拟退火算法"></a></h5><ol>
+<li>退火<br>在热力学上，退火（annealing）现象指物体逐渐降温的物理现象，温度愈低，物体的能量状态会低；够低后，液体开始冷凝与结晶，在结晶状态时，系统的能量状态最低。大自然在缓慢降温（亦即，退火）时，可“找到”最低能量状态：结晶。但是，如果过程过急过快，快速降温（亦称「淬炼」，quenching）时，会导致不是最低能态的非晶形。<br>如下图所示，首先（左图）物体处于非晶体状态。我们将固体加温至充分高（中图），再让其徐徐冷却，也就退火（右图）。加温时，固体内部粒子随温升变为无序状，内能增大，而徐徐冷却时粒子渐趋有序，在每个温度都达到平衡态，最后在常温时达到基态，内能减为最小（此时物体以晶体形态呈现）。<br><a href="//tuibii.github.io/2019/11/22/模拟退火算法解旅行商问题/1.png" data-caption data-fancybox="images"><img src="//tuibii.github.io/2019/11/22/模拟退火算法解旅行商问题/1.png" alt></a></li>
+<li>模拟退火<br>在下图这个函数中，我们想要去找到最优解C，如果我们采用贪心算法，我们从A点开始搜索，每一次搜索都取当前局面的最优解，那么当到达B点时，我们就会停止搜索。<br><a href="//tuibii.github.io/2019/11/22/模拟退火算法解旅行商问题/2.png" data-caption data-fancybox="images"><img src="//tuibii.github.io/2019/11/22/模拟退火算法解旅行商问题/2.png" alt></a><br>模拟退火其实也是一种贪心算法，他也是在不断地搜索当前局面的最优解，但是它的搜索过程引入了随机因素。模拟退火算法会以一定的概率来接受一个比当前解要差的解，因此有可能会跳出这个局部的最优解，达到全局的最优解。<br>当我们搜索到B点时，会有一定的概率去接受B点右边的不是局部最优的点，所以就有概率跳出局部最优解B，得到全局最优解C。<br>总结：<br>（1） 若f(x+1) &lt;= f(x)，即新解优于当前最优解，则接受这个新解为当前最优解。<br>（2） 若f(x+1) &gt; f(x)，即新解不如当前最优解，则有一定概率接受这个新解为当前最优解。<br>模拟退火算法从某一较高的温度出发，开始搜索当前最优解，一开始温度较高，变化的概率比较大，伴随温度参数的不断下降，变化的概率也逐渐下降，最后会逐渐趋向于稳定。</li>
+<li>代码</li>
+</ol>
+<pre><code class="hljs Java">
+<span class="hljs-comment">/** 初始温度 */</span>
+<span class="hljs-keyword">double</span> T = <span class="hljs-number">5000.0</span>;
 
-<h5 id="组装启用所有外键的语句">组装启用所有外键的语句<a class="post-anchor" href="#组装启用所有外键的语句"></a></h5><pre><code class="hljs undefined">select &apos;alter table &apos;||table_name||&apos; enable constraint &apos;||constraint_name||&apos;;&apos; from user_constraints where constraint_type=&apos;R&apos;;</code></pre>
+<span class="hljs-comment">/** 温度下限 */</span>
+<span class="hljs-keyword">double</span> T_min = <span class="hljs-number">1e-8</span>;
 
-<h5 id="组装删除所有外键的语句">组装删除所有外键的语句<a class="post-anchor" href="#组装删除所有外键的语句"></a></h5><pre><code class="hljs undefined">select &apos;alter table &apos;||table_name||&apos; drop constraint &apos;||constraint_name||&apos;;&apos; from user_constraints where constraint_type=&apos;R&apos;;</code></pre>
+<span class="hljs-comment">/** 退货系数 */</span>
+<span class="hljs-keyword">double</span> r = <span class="hljs-number">0.98</span>;
 
-<h5 id="查询所有外键">查询所有外键<a class="post-anchor" href="#查询所有外键"></a></h5><pre><code class="hljs undefined">select t.status,t.* from user_constraints t where constraint_type=&apos;R&apos;;</code></pre>
+<span class="hljs-comment">/** 每个温度的迭代次数 */</span>
+<span class="hljs-keyword">int</span> L = <span class="hljs-number">100</span>;
+
+<span class="hljs-comment">/** 总迭代次数 */</span>
+<span class="hljs-keyword">int</span> countL = <span class="hljs-number">0</span>;
+
+<span class="hljs-comment">/** 退火次数 */</span>
+<span class="hljs-keyword">int</span> countR = <span class="hljs-number">0</span>;
+
+<span class="hljs-keyword">while</span>(T &gt; T_min)&#123;
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i &lt; L ;i++) &#123;
+
+    <span class="hljs-comment">/** 随机交换cop中两个点的顺序 */</span>
+    cop = randomCity(cop);
+
+    <span class="hljs-comment">/** 计算 result 和 cop 两条回路的长度  */</span>
+    <span class="hljs-keyword">double</span> d1 = getDistance(result);
+    <span class="hljs-keyword">double</span> d2 = getDistance(cop);
+    <span class="hljs-keyword">double</span> de = d2 - d1;
+
+    <span class="hljs-keyword">if</span> (de &lt;= <span class="hljs-number">0</span>)&#123;
+        result = cop;
+    &#125;<span class="hljs-keyword">else</span> &#123;
+        <span class="hljs-keyword">if</span> (Math.exp(-de/T)&gt;Math.random())&#123;
+            result= cop;
+        &#125;
+    &#125;
+
+    countL++;
+  &#125;
+  T = T * r;
+  countR++;
+&#125;
+
+System.out.println(<span class="hljs-string">"最优解："</span>+result);
+System.out.println(<span class="hljs-string">"退火次数："</span>+countR);
+System.out.println(<span class="hljs-string">"总迭代次数："</span>+countL);</code></pre>
 
 
 
@@ -199,12 +250,10 @@
   <div class="post-guide">
     <div class="item left">
         
-          <a href="2019/11/22/模拟退火算法解旅行商问题/">模拟退火算法解旅行商问题</a>
-        
     </div>
     <div class="item right">
         
-          <a href="2019/11/13/Oracle数据库全量导出/">Oracle数据库全量导出</a>
+          <a href="2019/11/18/外键操作SQL生成/">外键操作SQL生成</a>
         
     </div>
   </div>
@@ -216,7 +265,7 @@
       本文作者：<a href="https://tuibii.github.io">tuibii</a>
     </div>
     <div class="link">
-      永久链接：<a href="https://tuibii.github.io/2019/11/18/外键操作SQL生成/">https://tuibii.github.io/2019/11/18/外键操作SQL生成/</a>
+      永久链接：<a href="https://tuibii.github.io/2019/11/22/模拟退火算法解旅行商问题/">https://tuibii.github.io/2019/11/22/模拟退火算法解旅行商问题/</a>
     </div>
     <div class="declare">
       版权声明：本文首发于<a href="https://tuibii.github.io">tuibii</a>的博客，转载请注明出处！
