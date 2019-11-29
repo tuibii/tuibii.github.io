@@ -16,12 +16,12 @@
     <meta name="description" content>
     
     <title>
-      模拟退火算法解旅行商问题 - t Blog
+      模拟退火算法解旅行商问题 - talk is cheap,show me the code
     </title>
     <link rel="manifest" href="/manifest.json">
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="/style/style.css">
-  <link rel="alternate" href="/atom.xml" title="t Blog" type="application/atom+xml">
+  <link rel="alternate" href="/atom.xml" title="talk is cheap,show me the code" type="application/atom+xml">
 </head>
   <body>
     
@@ -68,7 +68,7 @@
     <div id="header">
       <div class="intro">
         <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
-        <div class="author">tuibii</div>
+        <div class="author">liang</div>
       </div>
       <div class="nav">
         <span class="iconfont icon-menu menu-icon"></span>
@@ -87,7 +87,7 @@
       </div>
       <div class="magnify">
         <div class="about">
-          <div class="author">tuibii</div>
+          <div class="author">liang</div>
           <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
         </div>
 
@@ -112,7 +112,7 @@
         <div class="bottom">
           <div class="follow">
             
-            <a href="https://github.com/tuibii" target="_block">
+            <a href="https://github.com/wuy1liang" target="_block">
               <span class="iconfont icon-github"></span>
             </a>
             
@@ -172,8 +172,8 @@
     <p>最近要做一个旅游路线规划的应用，路线规划就是一个经典的旅行商问题</p>
 <h5 id="旅行商问题">旅行商问题<a class="post-anchor" href="#旅行商问题"></a></h5><p>旅行商问题（Travelling salesman problem, TSP）是这样一个问题：给定一系列城市和每对城市之间的距离，求解访问每一座城市一次并回到起始城市的最短回路。<br>解旅行商问题有很多种算法，这些算法分两种：精确算法和近似算法，精确算法有：回溯法、动态规划等，近似算法有：贪心算法、蚁群算法、模拟退火算法、遗传算法等。<br>精确算法一定可以解出最优解，但是时间复杂度很高，近似算法的效率就比准确算法高得多，缺点就是有一定概率得不到最优解。但是在大部分情况下，他都能算出最优解，即便得不到最优解，算出来的近似解也是十分接近最优解的，故我决定采用近似算法。<br>上网查阅一些资料后我决定采用模拟退火算法。<br>模拟退火算法(Simulated Annealing，SA)最早的思想是由N. Metropolis 等人于1953年提出。1983 年,S. Kirkpatrick 等成功地将退火思想引入到组合优化领域。它是基于Monte-Carlo迭代求解策略的一种随机寻优算法，其出发点是基于物理中固体物质的退火过程与一般组合优化问题之间的相似性。模拟退火算法从某一较高初温出发，伴随温度参数的不断下降,结合概率突跳特性在解空间中随机寻找目标函数的全局最优解，即在局部最优解能概率性地跳出并最终趋于全局最优。模拟退火算法是一种通用的优化算法，理论上算法具有概率的全局优化性能,目前已在工程中得到了广泛应用，诸如VLSI、生产调度、控制工程、机器学习、神经网络、信号处理等领域。</p>
 <h5 id="模拟退火算法">模拟退火算法<a class="post-anchor" href="#模拟退火算法"></a></h5><ol>
-<li>退火<br>在热力学上，退火（annealing）现象指物体逐渐降温的物理现象，温度愈低，物体的能量状态会低；够低后，液体开始冷凝与结晶，在结晶状态时，系统的能量状态最低。大自然在缓慢降温（亦即，退火）时，可“找到”最低能量状态：结晶。但是，如果过程过急过快，快速降温（亦称「淬炼」，quenching）时，会导致不是最低能态的非晶形。<br>如下图所示，首先（左图）物体处于非晶体状态。我们将固体加温至充分高（中图），再让其徐徐冷却，也就退火（右图）。加温时，固体内部粒子随温升变为无序状，内能增大，而徐徐冷却时粒子渐趋有序，在每个温度都达到平衡态，最后在常温时达到基态，内能减为最小（此时物体以晶体形态呈现）。<br><a href="//tuibii.github.io/2019/11/22/模拟退火算法解旅行商问题/1.png" data-caption data-fancybox="images"><img src="//tuibii.github.io/2019/11/22/模拟退火算法解旅行商问题/1.png" alt></a></li>
-<li>模拟退火<br>在下图这个函数中，我们想要去找到最优解C，如果我们采用贪心算法，我们从A点开始搜索，每一次搜索都取当前局面的最优解，那么当到达B点时，我们就会停止搜索。<br><a href="//tuibii.github.io/2019/11/22/模拟退火算法解旅行商问题/2.png" data-caption data-fancybox="images"><img src="//tuibii.github.io/2019/11/22/模拟退火算法解旅行商问题/2.png" alt></a><br>模拟退火其实也是一种贪心算法，他也是在不断地搜索当前局面的最优解，但是它的搜索过程引入了随机因素。模拟退火算法会以一定的概率来接受一个比当前解要差的解，因此有可能会跳出这个局部的最优解，达到全局的最优解。<br>当我们搜索到B点时，会有一定的概率去接受B点右边的不是局部最优的点，所以就有概率跳出局部最优解B，得到全局最优解C。<br>总结：<br>（1） 若f(x+1) &lt;= f(x)，即新解优于当前最优解，则接受这个新解为当前最优解。<br>（2） 若f(x+1) &gt; f(x)，即新解不如当前最优解，则有一定概率接受这个新解为当前最优解。<br>模拟退火算法从某一较高的温度出发，开始搜索当前最优解，一开始温度较高，变化的概率比较大，伴随温度参数的不断下降，变化的概率也逐渐下降，最后会逐渐趋向于稳定。</li>
+<li>退火<br>在热力学上，退火（annealing）现象指物体逐渐降温的物理现象，温度愈低，物体的能量状态会低；够低后，液体开始冷凝与结晶，在结晶状态时，系统的能量状态最低。大自然在缓慢降温（亦即，退火）时，可“找到”最低能量状态：结晶。但是，如果过程过急过快，快速降温（亦称「淬炼」，quenching）时，会导致不是最低能态的非晶形。<br>如下图所示，首先（左图）物体处于非晶体状态。我们将固体加温至充分高（中图），再让其徐徐冷却，也就退火（右图）。加温时，固体内部粒子随温升变为无序状，内能增大，而徐徐冷却时粒子渐趋有序，在每个温度都达到平衡态，最后在常温时达到基态，内能减为最小（此时物体以晶体形态呈现）。<br><a href="//wuy1liang.github.io/2019/11/22/模拟退火算法解旅行商问题/1.png" data-caption data-fancybox="images"><img src="//wuy1liang.github.io/2019/11/22/模拟退火算法解旅行商问题/1.png" alt></a></li>
+<li>模拟退火<br>在下图这个函数中，我们想要去找到最优解C，如果我们采用贪心算法，我们从A点开始搜索，每一次搜索都取当前局面的最优解，那么当到达B点时，我们就会停止搜索。<br><a href="//wuy1liang.github.io/2019/11/22/模拟退火算法解旅行商问题/2.png" data-caption data-fancybox="images"><img src="//wuy1liang.github.io/2019/11/22/模拟退火算法解旅行商问题/2.png" alt></a><br>模拟退火其实也是一种贪心算法，他也是在不断地搜索当前局面的最优解，但是它的搜索过程引入了随机因素。模拟退火算法会以一定的概率来接受一个比当前解要差的解，因此有可能会跳出这个局部的最优解，达到全局的最优解。<br>当我们搜索到B点时，会有一定的概率去接受B点右边的不是局部最优的点，所以就有概率跳出局部最优解B，得到全局最优解C。<br>总结：<br>（1） 若f(x+1) &lt;= f(x)，即新解优于当前最优解，则接受这个新解为当前最优解。<br>（2） 若f(x+1) &gt; f(x)，即新解不如当前最优解，则有一定概率接受这个新解为当前最优解。<br>模拟退火算法从某一较高的温度出发，开始搜索当前最优解，一开始温度较高，变化的概率比较大，伴随温度参数的不断下降，变化的概率也逐渐下降，最后会逐渐趋向于稳定。</li>
 <li>代码</li>
 </ol>
 <pre><code class="hljs Java">
@@ -262,13 +262,13 @@ System.out.println(<span class="hljs-string">"总迭代次数："</span>+countL)
 
   <div class="post-copyright">
     <div class="auth">
-      本文作者：<a href="https://tuibii.github.io">tuibii</a>
+      本文作者：<a href="https://wuy1liang.github.io">liang</a>
     </div>
     <div class="link">
-      永久链接：<a href="https://tuibii.github.io/2019/11/22/模拟退火算法解旅行商问题/">https://tuibii.github.io/2019/11/22/模拟退火算法解旅行商问题/</a>
+      永久链接：<a href="https://wuy1liang.github.io/2019/11/22/模拟退火算法解旅行商问题/">https://wuy1liang.github.io/2019/11/22/模拟退火算法解旅行商问题/</a>
     </div>
     <div class="declare">
-      版权声明：本文首发于<a href="https://tuibii.github.io">tuibii</a>的博客，转载请注明出处！
+      版权声明：本文首发于<a href="https://wuy1liang.github.io">liang</a>的博客，转载请注明出处！
     </div>
   </div>
 
@@ -280,7 +280,7 @@ System.out.println(<span class="hljs-string">"总迭代次数："</span>+countL)
         <footer>
           <div class="copyright">
             ©2019
-            <a href="https://tuibii.github.io">tuibii</a> Powered by <a href="https://hexo.io">Hexo</a> |
+            <a href="https://wuy1liang.github.io">liang</a> Powered by <a href="https://hexo.io">Hexo</a> |
             <a href="https://github.com/shixiaohu2206/hexo-theme-huhu">hexo-theme-huhu</a>
           </div>
           

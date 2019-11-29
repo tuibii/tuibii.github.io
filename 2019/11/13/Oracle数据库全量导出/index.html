@@ -16,12 +16,12 @@
     <meta name="description" content>
     
     <title>
-      Oracle数据库全量导出 - t Blog
+      Oracle数据库全量导出 - talk is cheap,show me the code
     </title>
     <link rel="manifest" href="/manifest.json">
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="/style/style.css">
-  <link rel="alternate" href="/atom.xml" title="t Blog" type="application/atom+xml">
+  <link rel="alternate" href="/atom.xml" title="talk is cheap,show me the code" type="application/atom+xml">
 </head>
   <body>
     
@@ -68,7 +68,7 @@
     <div id="header">
       <div class="intro">
         <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
-        <div class="author">tuibii</div>
+        <div class="author">liang</div>
       </div>
       <div class="nav">
         <span class="iconfont icon-menu menu-icon"></span>
@@ -87,7 +87,7 @@
       </div>
       <div class="magnify">
         <div class="about">
-          <div class="author">tuibii</div>
+          <div class="author">liang</div>
           <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
         </div>
 
@@ -112,7 +112,7 @@
         <div class="bottom">
           <div class="follow">
             
-            <a href="https://github.com/tuibii" target="_block">
+            <a href="https://github.com/wuy1liang" target="_block">
               <span class="iconfont icon-github"></span>
             </a>
             
@@ -171,14 +171,14 @@
     </div>
     <p>今天需要把测试服务器数据库迁移到生产上，导出SQL和执行SQL都需要很长的时间，而导出和执行dmp文件，只需要几秒钟，就可以将数据库迁移到生产服务器上</p>
 <h4 id="导出dmp">导出dmp<a class="post-anchor" href="#导出dmp"></a></h4><ol>
-<li>切换Oracle角色<br>su - oracle<br><a href="//tuibii.github.io/2019/11/13/Oracle数据库全量导出/1.png" data-caption data-fancybox="images"><img src="//tuibii.github.io/2019/11/13/Oracle数据库全量导出/1.png" alt></a></li>
-<li>导出<br>exp 用户名/密码@orcl file=路径 owner=用户名<br><a href="//tuibii.github.io/2019/11/13/Oracle数据库全量导出/2.png" data-caption data-fancybox="images"><img src="//tuibii.github.io/2019/11/13/Oracle数据库全量导出/2.png" alt></a></li>
+<li>切换Oracle角色<br>su - oracle<br><a href="//wuy1liang.github.io/2019/11/13/Oracle数据库全量导出/1.png" data-caption data-fancybox="images"><img src="//wuy1liang.github.io/2019/11/13/Oracle数据库全量导出/1.png" alt></a></li>
+<li>导出<br>exp 用户名/密码@orcl file=路径 owner=用户名<br><a href="//wuy1liang.github.io/2019/11/13/Oracle数据库全量导出/2.png" data-caption data-fancybox="images"><img src="//wuy1liang.github.io/2019/11/13/Oracle数据库全量导出/2.png" alt></a></li>
 </ol>
 <h4 id="导入dmp">导入dmp<a class="post-anchor" href="#导入dmp"></a></h4><ol>
 <li>在目标机器上创建一个专用文件夹，比如imp_dmp，将dmp文件放入该文件夹；<br>注：需要创建的文件不止log一个，所以给个文件夹并赋权最方便；</li>
 <li>将该文件夹修改所有者：chown -R oracle:oinstall imp_dmp;</li>
 <li>在目标机器上切换到oracle操作者：su - oracle<br>此步是为了执行命令时可以获取到环境变量，否则会找不到imp命令</li>
-<li>执行导入命令：<br>imp 用户名/密码 file=dmp文件路径 log=log文件路径 fromuser=原数据库用户名 touser=用户名<br><a href="//tuibii.github.io/2019/11/13/Oracle数据库全量导出/3.png" data-caption data-fancybox="images"><img src="//tuibii.github.io/2019/11/13/Oracle数据库全量导出/3.png" alt></a></li>
+<li>执行导入命令：<br>imp 用户名/密码 file=dmp文件路径 log=log文件路径 fromuser=原数据库用户名 touser=用户名<br><a href="//wuy1liang.github.io/2019/11/13/Oracle数据库全量导出/3.png" data-caption data-fancybox="images"><img src="//wuy1liang.github.io/2019/11/13/Oracle数据库全量导出/3.png" alt></a></li>
 </ol>
 
 
@@ -220,13 +220,13 @@
 
   <div class="post-copyright">
     <div class="auth">
-      本文作者：<a href="https://tuibii.github.io">tuibii</a>
+      本文作者：<a href="https://wuy1liang.github.io">liang</a>
     </div>
     <div class="link">
-      永久链接：<a href="https://tuibii.github.io/2019/11/13/Oracle数据库全量导出/">https://tuibii.github.io/2019/11/13/Oracle数据库全量导出/</a>
+      永久链接：<a href="https://wuy1liang.github.io/2019/11/13/Oracle数据库全量导出/">https://wuy1liang.github.io/2019/11/13/Oracle数据库全量导出/</a>
     </div>
     <div class="declare">
-      版权声明：本文首发于<a href="https://tuibii.github.io">tuibii</a>的博客，转载请注明出处！
+      版权声明：本文首发于<a href="https://wuy1liang.github.io">liang</a>的博客，转载请注明出处！
     </div>
   </div>
 
@@ -238,7 +238,7 @@
         <footer>
           <div class="copyright">
             ©2019
-            <a href="https://tuibii.github.io">tuibii</a> Powered by <a href="https://hexo.io">Hexo</a> |
+            <a href="https://wuy1liang.github.io">liang</a> Powered by <a href="https://hexo.io">Hexo</a> |
             <a href="https://github.com/shixiaohu2206/hexo-theme-huhu">hexo-theme-huhu</a>
           </div>
           
