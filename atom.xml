@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://wuy1liang.github.io/"/>
-  <updated>2019-11-22T08:05:00.691Z</updated>
+  <updated>2019-12-17T09:47:50.827Z</updated>
   <id>https://wuy1liang.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java的fail-fast与fail-safe机制</title>
+    <link href="https://wuy1liang.github.io/2019/12/17/Java%E7%9A%84fail-fast%E4%B8%8Efail-safe%E6%9C%BA%E5%88%B6/"/>
+    <id>https://wuy1liang.github.io/2019/12/17/Java%E7%9A%84fail-fast%E4%B8%8Efail-safe%E6%9C%BA%E5%88%B6/</id>
+    <published>2019-12-17T07:44:33.000Z</published>
+    <updated>2019-12-17T09:47:50.827Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ol&gt;
+&lt;li&gt;fail-fast（快速失败）&lt;br&gt;fail-fast是Java集合的一种错误检测机制，若一个方法不允许集合被多个线程同时修改，当方法检测到集合对象的并发修改时，就会抛出ConcurrentModificationException异常。&lt;br&gt;java.ut
+      
+    
+    </summary>
+    
+    
+    
+      <category term="Java" scheme="https://wuy1liang.github.io/tags/Java/"/>
+    
+      <category term="集合" scheme="https://wuy1liang.github.io/tags/%E9%9B%86%E5%90%88/"/>
+    
+  </entry>
   
   <entry>
     <title>模拟退火算法解旅行商问题</title>
