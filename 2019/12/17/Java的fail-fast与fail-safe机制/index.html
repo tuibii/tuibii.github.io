@@ -165,7 +165,9 @@
       </div>
     </div>
     <ol>
-<li>fail-fast（快速失败）<br>fail-fast是Java集合的一种错误检测机制，若一个方法不允许集合被多个线程同时修改，当方法检测到集合对象的并发修改时，就会抛出ConcurrentModificationException异常。<br>java.util包下的集合类都是快速失败的，不能在多线程下发生并发修改（迭代过程中被修改）。<br>用List来举例：<pre><code class="hljs undefined">List&lt;String&gt; list = new ArrayList&lt;&gt;();
+<li>fail-fast（快速失败）<br>fail-fast是Java集合的一种错误检测机制，若一个方法不允许集合被多个线程同时修改，当方法检测到集合对象的并发修改时，就会抛出ConcurrentModificationException异常。<br>java.util包下的集合类都是快速失败的，不能在多线程下发生并发修改（迭代过程中被修改）。<br>用List来举例：  </li>
+</ol>
+<pre><code class="hljs undefined">List&lt;String&gt; list = new ArrayList&lt;&gt;();
 list.add(&quot;0&quot;);
 list.add(&quot;1&quot;);
 list.add(&quot;2&quot;);
@@ -180,12 +182,32 @@ while (iterator.hasNext())&#123;
     &#125;
 &#125;</code></pre>
 
-</li>
-</ol>
-<p>运行结果：<br><a href="//wuy1liang.github.io/2019/12/17/Java的fail-fast与fail-safe机制/1.png" data-caption data-fancybox="images"><img src="//wuy1liang.github.io/2019/12/17/Java的fail-fast与fail-safe机制/1.png" alt></a><br>点开ArrayList的源码可以看到checkForComodification()这个方法<br><a href="//wuy1liang.github.io/2019/12/17/Java的fail-fast与fail-safe机制/2.png" data-caption data-fancybox="images"><img src="//wuy1liang.github.io/2019/12/17/Java的fail-fast与fail-safe机制/2.png" alt></a><br>这个方法是异常抛出的地方<br><a href="//wuy1liang.github.io/2019/12/17/Java的fail-fast与fail-safe机制/3.png" data-caption data-fancybox="images"><img src="//wuy1liang.github.io/2019/12/17/Java的fail-fast与fail-safe机制/3.png" alt></a><br>这个方法内容也很简单，就是比较modCount和expectedModCount这两个值<br><a href="//wuy1liang.github.io/2019/12/17/Java的fail-fast与fail-safe机制/4.png" data-caption data-fancybox="images"><img src="//wuy1liang.github.io/2019/12/17/Java的fail-fast与fail-safe机制/4.png" alt></a><br>所以我们要搞清楚，到底modCount和expectedModCount这两个变量都是什么东西。<br>通过翻源码，我们可以发现：<br><a href="//wuy1liang.github.io/2019/12/17/Java的fail-fast与fail-safe机制/5.png" data-caption data-fancybox="images"><img src="//wuy1liang.github.io/2019/12/17/Java的fail-fast与fail-safe机制/5.png" alt></a><br>这段话的意思是modCount表示List的结构被修改的次数，结构修改是指List的大小被修改，即新增和删除操作，会改变modCount的值。modCount被迭代器使用，如果这个值被意外改变，就会抛出ConcurrentModificationException。<br><a href="//wuy1liang.github.io/2019/12/17/Java的fail-fast与fail-safe机制/6.png" data-caption data-fancybox="images"><img src="//wuy1liang.github.io/2019/12/17/Java的fail-fast与fail-safe机制/6.png" alt></a><br>而expectedModCount 是 ArrayList中的一个内部类——Itr中的成员变量，其值的初始值即是modCount。<br><a href="//wuy1liang.github.io/2019/12/17/Java的fail-fast与fail-safe机制/7.png" data-caption data-fancybox="images"><img src="//wuy1liang.github.io/2019/12/17/Java的fail-fast与fail-safe机制/7.png" alt></a><br><a href="//wuy1liang.github.io/2019/12/17/Java的fail-fast与fail-safe机制/8.png" data-caption data-fancybox="images"><img src="//wuy1liang.github.io/2019/12/17/Java的fail-fast与fail-safe机制/8.png" alt></a><br>当List进行删除操作时，modCount+1，而expectedModCount却还是原先的值，所以当迭代器执行next方法时就会检测到集合的结构被改变了，所以就会抛出ConcurrentModificationException异常。</p>
+<p>运行结果：  </p>
+<p><a href="//wuy1liang.github.io/2019/12/17/Java的fail-fast与fail-safe机制/1.png" data-caption data-fancybox="images"><img src="//wuy1liang.github.io/2019/12/17/Java的fail-fast与fail-safe机制/1.png" alt></a><br>点开ArrayList的源码可以看到checkForComodification()这个方法  </p>
+<p><a href="//wuy1liang.github.io/2019/12/17/Java的fail-fast与fail-safe机制/2.png" data-caption data-fancybox="images"><img src="//wuy1liang.github.io/2019/12/17/Java的fail-fast与fail-safe机制/2.png" alt></a><br>这个方法是异常抛出的地方  </p>
+<p><a href="//wuy1liang.github.io/2019/12/17/Java的fail-fast与fail-safe机制/3.png" data-caption data-fancybox="images"><img src="//wuy1liang.github.io/2019/12/17/Java的fail-fast与fail-safe机制/3.png" alt></a><br>这个方法内容也很简单，就是比较modCount和expectedModCount这两个值  </p>
+<p><a href="//wuy1liang.github.io/2019/12/17/Java的fail-fast与fail-safe机制/4.png" data-caption data-fancybox="images"><img src="//wuy1liang.github.io/2019/12/17/Java的fail-fast与fail-safe机制/4.png" alt></a><br>所以我们要搞清楚，到底modCount和expectedModCount这两个变量都是什么东西。 </p>
+<p>通过翻源码，我们可以发现：<br><a href="//wuy1liang.github.io/2019/12/17/Java的fail-fast与fail-safe机制/5.png" data-caption data-fancybox="images"><img src="//wuy1liang.github.io/2019/12/17/Java的fail-fast与fail-safe机制/5.png" alt></a><br>这段话的意思是modCount表示List的结构被修改的次数，结构修改是指List的大小被修改，即新增和删除操作，会改变modCount的值。modCount被迭代器使用，如果这个值被意外改变，就会抛出ConcurrentModificationException。 </p>
+<p><a href="//wuy1liang.github.io/2019/12/17/Java的fail-fast与fail-safe机制/6.png" data-caption data-fancybox="images"><img src="//wuy1liang.github.io/2019/12/17/Java的fail-fast与fail-safe机制/6.png" alt></a><br>而expectedModCount 是 ArrayList中的一个内部类——Itr中的成员变量，其值的初始值即是modCount。  </p>
+<p><a href="//wuy1liang.github.io/2019/12/17/Java的fail-fast与fail-safe机制/7.png" data-caption data-fancybox="images"><img src="//wuy1liang.github.io/2019/12/17/Java的fail-fast与fail-safe机制/7.png" alt></a><br><a href="//wuy1liang.github.io/2019/12/17/Java的fail-fast与fail-safe机制/8.png" data-caption data-fancybox="images"><img src="//wuy1liang.github.io/2019/12/17/Java的fail-fast与fail-safe机制/8.png" alt></a><br>当List进行删除操作时，modCount+1，而expectedModCount却还是原先的值，所以当迭代器执行next方法时就会检测到集合的结构被改变了，所以就会抛出ConcurrentModificationException异常。  </p>
+<p>这也是为什么在阿里巴巴Java开发手册中，关于集合操作有这样一条强制规定：<br><a href="//wuy1liang.github.io/2019/12/17/Java的fail-fast与fail-safe机制/9.png" data-caption data-fancybox="images"><img src="//wuy1liang.github.io/2019/12/17/Java的fail-fast与fail-safe机制/9.png" alt></a><br>foreach 循环实际上是一个语法糖， foreach 对集合的遍历也是使用iterator迭代器迭代，所以当迭代器每一次迭代都会检查modCount和expectedModCount是否相等，所以在foreach循环中进行add/remove操作也会抛出ConcurrentModificationException异常。  </p>
 <ol start="2">
-<li>fail-safe（安全失败）</li>
+<li>fail-safe（安全失败）<br>在并发包下的容器是采用fail-sale机制，它在遍历时不是直接在原集合内容上遍历的，而是先复制集合内容，在集合的拷贝上进行遍历，这样的遍历，由于在遍历过程中，集合的修改不会被迭代器检测到，也会不会抛出异常。<br>基于拷贝内容的优点是避免了ConcurrentModificationException，但同样地，迭代器并不能访问到修改后的内容，即：迭代器遍历的是开始遍历那一刻拿到的集合拷贝，在遍历期间原集合发生的修改迭代器是不知道的。</li>
 </ol>
+<p>例如 java.util.concurrent.ConcurrentLinkedDeque;</p>
+<pre><code class="hljs undefined">ConcurrentLinkedDeque&lt;String&gt; concurrentLinkedDeque = new ConcurrentLinkedDeque&lt;&gt;();
+        concurrentLinkedDeque.add(&quot;1&quot;);
+        concurrentLinkedDeque.add(&quot;2&quot;);
+        concurrentLinkedDeque.add(&quot;3&quot;);
+        concurrentLinkedDeque.add(&quot;4&quot;);
+
+        for (String num:concurrentLinkedDeque)&#123;
+            concurrentLinkedDeque.remove();
+            System.out.println(&quot;num:&quot;+num);
+            System.out.println(&quot;size:&quot;+concurrentLinkedDeque.size());
+        &#125;</code></pre>
+
+<p>运行结果：<br><a href="//wuy1liang.github.io/2019/12/17/Java的fail-fast与fail-safe机制/10.png" data-caption data-fancybox="images"><img src="//wuy1liang.github.io/2019/12/17/Java的fail-fast与fail-safe机制/10.png" alt></a></p>
 
 
   
