@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://wuy1liang.github.io/"/>
-  <updated>2019-12-20T00:53:50.098Z</updated>
+  <updated>2020-03-23T15:26:42.011Z</updated>
   <id>https://wuy1liang.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>比较HashMap,HashTable,ConcurrentHashMap</title>
+    <link href="https://wuy1liang.github.io/2020/03/23/%E6%AF%94%E8%BE%83HashMap-HashTable-ConcurrentHashMap/"/>
+    <id>https://wuy1liang.github.io/2020/03/23/%E6%AF%94%E8%BE%83HashMap-HashTable-ConcurrentHashMap/</id>
+    <published>2020-03-23T15:06:13.000Z</published>
+    <updated>2020-03-23T15:26:42.011Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ul&gt;
+&lt;li&gt;&lt;p&gt;HashMap&lt;br&gt;HashMap底层实现方式：&lt;br&gt;JDK1.8之前是采用数组+链表，当产生哈希碰撞时，会采用头插法往链表中添加节点，在高并发的情况下，当HashMap扩容时可能会产生环形链表，导致get的时候陷入死循环。JDK1.8是采用数组+红黑
+      
+    
+    </summary>
+    
+    
+    
+      <category term="Java" scheme="https://wuy1liang.github.io/tags/Java/"/>
+    
+      <category term="集合" scheme="https://wuy1liang.github.io/tags/%E9%9B%86%E5%90%88/"/>
+    
+  </entry>
   
   <entry>
     <title>Java的fail-fast与fail-safe机制</title>
